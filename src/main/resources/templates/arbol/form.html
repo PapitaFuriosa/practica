@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Árbol</title>
+    </head>
+    <body>
+
+        <h2 th:text="${arbol.idArbol == null} ? 'Nuevo Árbol' : 'Editar Árbol'"></h2>
+
+        <form th:action="@{/arbol/guardar}" method="post" enctype="multipart/form-data" th:object="${arbol}">
+
+
+            <input type="hidden" th:field="*{idArbol}" />
+
+
+            Nombre común:
+            <input type="text" th:field="*{nombreComun}" required="required" />
+            <br /><br />
+
+
+            Tipo de flor:
+            <input type="text" th:field="*{tipoFlor}" required="required" />
+            <br /><br />
+
+
+            Dureza de la madera:
+            <input type="number" th:field="*{durezaMadera}" required="required" />
+            <br /><br />
+
+
+            Imagen (Firebase):
+            <input type="file" name="imagenFile" />
+            <br /><br />
+
+
+            <button type="submit">Guardar</button>
+            <a th:href="@{/arbol/listado}">Cancelar</a>
+
+        </form>
+
+    </body>
+</html>
